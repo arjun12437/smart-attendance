@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+</head>
+<body>
+    <h2>Welcome to the Student Dashboard</h2>
+
+    <!-- Logout link -->
+    <p><a href="{% url 'admin_logout' %}", onclick="">Logout</a></p>
+
+    <p>Date: {{ attendance.date }}</p>
+    <p>Status: {% if attendance.present %}✅ Present{% else %}❌ Not marked{% endif %}</p>
+
+    {% if not attendance.present %}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">
+            <script>console.log("Working....")</script>
+            Mark Attendance
+        </button>
+    </form>
+    {% endif %}
+</body>
+</html>

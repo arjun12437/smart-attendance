@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to Smart Attendance System</h1>
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!</p>
+        {% if user.is_staff %}
+            <p><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></p>
+        {% else %}
+            <p><a href="{% url 'student_dashboard' %}">Student Dashboard</a></p>
+        {% endif %}
+        <p><a href="{% url 'student_logout' %}">Logout</a></p>
+    {% else %}
+        <p><a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a></p>
+    {% endif %}
+</body>
+</html>
